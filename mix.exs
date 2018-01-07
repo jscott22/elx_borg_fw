@@ -54,7 +54,7 @@ defmodule Fw.Mixfile do
     [{:nerves, "~> 0.7", runtime: false},
     {:nerves_network, "~> 0.3"},
     {:nerves_firmware_ssh, "~> 0.2"},
-    {:ui, path: "../ui"}] ++
+    {:ui, path: "../ui", env: Mix.env()}] ++
     deps(@target)
   end
 

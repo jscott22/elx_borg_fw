@@ -56,3 +56,18 @@ config :nerves_firmware_ssh,
   ]
 
 config :logger, level: :debug
+
+config :thunder_borg,
+  i2c: ElixirALE.I2C,
+  children: [
+    {ThunderBorg.I2C, []},
+    {ThunderBorg, []}
+  ]
+
+import Supervisor.Spec
+
+config :camera,
+  camera: Picam,
+  children: [
+    worker(Picam.Camera, [])
+  ]
