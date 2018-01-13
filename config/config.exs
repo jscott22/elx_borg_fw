@@ -64,6 +64,13 @@ config :thunder_borg,
     {ThunderBorg, []}
   ]
 
+config :ultra_borg,
+  i2c: ElixirALE.I2C,
+  children: [
+    {UltraBorg.I2C, []},
+    {UltraBorg, []}
+  ]
+
 import Supervisor.Spec
 
 config :camera,
