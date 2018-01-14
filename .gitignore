@@ -5,6 +5,8 @@
 /deps
 /*.ez
 
+**secret**
+
 # Nerves artifacts
 /_images
 /.nerves
