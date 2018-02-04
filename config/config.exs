@@ -78,3 +78,6 @@ config :camera,
   children: [
     worker(Picam.Camera, [])
   ]
+
+config :ui,
+  script: '<script src="/js/app.js"></script>'
