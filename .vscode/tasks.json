@@ -16,6 +16,18 @@
       }
     },
     {
+      "label": "Demo",
+      "type": "shell",
+      "command": "sh demo.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "focus": true
+      }
+    },
+    {
       "label": "Burn SSH",
       "type": "shell",
       "command": "sh ssh.sh",

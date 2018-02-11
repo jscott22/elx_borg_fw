@@ -75,6 +75,7 @@ import Supervisor.Spec
 
 config :camera,
   camera: Picam,
+  size: 425,
   children: [
     worker(Picam.Camera, [])
   ]
