@@ -18,15 +18,14 @@ use Mix.Config
 # involved with firmware updates.
 config :bootloader,
   init: [:nerves_runtime, :nerves_network],
-  app: Mix.Project.config[:app]
+  app: Mix.Project.config()[:app]
 
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 # Uncomment to use target specific configurations
 
 # import_config "#{Mix.Project.config[:target]}.exs"
-config :nerves_network,
-  regulatory_domain: "US"
+config :nerves_network, regulatory_domain: "US"
 
 key_mgmt = System.get_env("NERVES_NETWORK_KEY_MGMT") || "WPA-PSK"
 
@@ -35,9 +34,6 @@ config :nerves_network, :default,
     ssid: System.get_env("NERVES_NETWORK_SSID"),
     psk: System.get_env("NERVES_NETWORK_PSK"),
     key_mgmt: String.to_atom(key_mgmt)
-  ],
-  eth0: [
-    ipv4_address_method: :dhcp
   ]
 
 config :ui, UiWeb.Endpoint,
@@ -52,10 +48,10 @@ config :ui, UiWeb.Endpoint,
 
 config :nerves_firmware_ssh,
   authorized_keys: [
-    File.read!(Path.join(System.user_home!, ".ssh/id_rsa.pub"))
+    File.read!(Path.join(System.user_home!(), ".ssh/id_rsa.pub"))
   ]
 
-config :logger, level: :debug
+config :logger, level: :info
 
 config :thunder_borg,
   i2c: ElixirALE.I2C,
@@ -80,5 +76,4 @@ config :camera,
     worker(Picam.Camera, [])
   ]
 
-config :ui,
-  script: '<script src="/js/app.js"></script>'
+config :ui, script: '<script src="/js/app.js"></script>'
